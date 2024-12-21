@@ -74,7 +74,7 @@ const Portfolio = () => {
               <a href="#" className="p-2 text-gray-600 hover:text-gray-900">
                 <Github size={24} />
               </a>
-              <a href="#" className="p-2 text-gray-600 hover:text-gray-900">
+              <a href="https://www.linkedin.com/in/danielfrancescototti/" className="p-2 text-gray-600 hover:text-gray-900">
                 <Linkedin size={24} />
               </a>
               <a href="#" className="p-2 text-gray-600 hover:text-gray-900">
@@ -142,7 +142,7 @@ const Portfolio = () => {
             I'd love to discuss how we can work together!
           </p>
           <a 
-            href="mailto:contact@example.com"
+            href="mailto:danitottinainggolan@gmail.com"
             className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800"
           >
             Contact Me
