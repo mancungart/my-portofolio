@@ -68,7 +68,7 @@ const Portfolio = () => {
               Hi, I'm Daniel Francesco Totti
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Multimedia Artist | 3D Artist | Visual Storyteller
+              Motion Grapher | 3D Artist | Visual Storyteller
             </p>
             <div className="flex justify-center space-x-4">
               <a href="#" className="p-2 text-gray-600 hover:text-gray-900">
