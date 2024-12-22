@@ -53,7 +53,7 @@ const Portfolio = () => {
       <header className="bg-white">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <span className="text-xl font-bold">Portfolio</span>
+            <span className="text-xl font-bold">Daniel Totti</span>
             <div className="space-x-4">
               <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
               <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
@@ -71,13 +71,13 @@ const Portfolio = () => {
               Motion Grapher | 3D Artist | Visual Storyteller
             </p>
             <div className="flex justify-center space-x-4">
-              <a href="#" className="p-2 text-gray-600 hover:text-gray-900">
+              <a href="https://github.com/mancungart" className="p-2 text-gray-600 hover:text-gray-900">
                 <Github size={24} />
               </a>
               <a href="https://www.linkedin.com/in/danielfrancescototti/" className="p-2 text-gray-600 hover:text-gray-900">
                 <Linkedin size={24} />
               </a>
-              <a href="#" className="p-2 text-gray-600 hover:text-gray-900">
+              <a href="mailto:danitottinainggolan@gmail.com" className="p-2 text-gray-600 hover:text-gray-900">
                 <Mail size={24} />
               </a>
             </div>
