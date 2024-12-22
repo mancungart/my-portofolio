@@ -1,7 +1,15 @@
-import React from 'react';
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Menu, X } from 'lucide-react';
+import logo from './images/logo.png';
+import "./App.css"
 
 const Portfolio = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const projects = [
     {
       title: "Digital Photography",
@@ -49,19 +57,59 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <header className="bg-white">
+      {/* Hero Section with Responsive Nav */}
+      <header className="bg-white relative">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <span className="text-xl font-bold">Daniel Totti</span>
-            <div className="space-x-4">
+            <img className="logo" src={logo} alt="Daniel Totti" />
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-4">
               <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
               <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
               <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+              onClick={toggleMenu}
+              aria-label="Toggle Menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
+              <div className="flex flex-col py-4">
+                <a 
+                  href="#projects" 
+                  className="px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  onClick={toggleMenu}
+                >
+                  Projects
+                </a>
+                <a 
+                  href="#about" 
+                  className="px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  onClick={toggleMenu}
+                >
+                  About
+                </a>
+                <a 
+                  href="#contact" 
+                  className="px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  onClick={toggleMenu}
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
+          )}
         </nav>
-        
+        </header>
         <div className="container mx-auto px-6 py-24">
           <div className="text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-4">
@@ -83,8 +131,9 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
-      </header>
 
+
+      {/* Rest of the components remain the same */}
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-white">
         <div className="container mx-auto px-6">
