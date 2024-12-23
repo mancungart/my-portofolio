@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Menu, X } from 'lucide-react';
 import logo from './images/logo.png';
+import ImageModal from './ImageModal';
 import "./App.css"
+import threeDImage from './images/3D.png';
+import totebag from './images/totebag.png';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalImage, setModalImage] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const openModal = (image) => {
+    setModalImage(image);
+    document.body.style.overflow = 'hidden'; 
+  };
+
+  const closeModal = () => {
+    setModalImage(null);
+    document.body.style.overflow = 'unset'; 
   };
 
   const projects = [
@@ -19,14 +33,14 @@ const Portfolio = () => {
     },
     {
       title: "Motion Graphics",
-      description: "Animated logos and brand identity videos for corporate clients",
-      image: "/api/placeholder/600/400",
-      tags: ["After Effects", "Premiere Pro", "Animation"]
+      description: "Totebag design Bank Mandiri",
+      image: totebag,
+      tags: ["Photoshop", "Illustrator", "Digital Painting"]
     },
     {
       title: "3D Modeling",
       description: "Character and environment design for gaming projects",
-      image: "/api/placeholder/600/400",
+      image: threeDImage,
       tags: ["Blender", "Maya", "Texturing"]
     },
     {
@@ -50,7 +64,7 @@ const Portfolio = () => {
   ];
 
   const skills = [
-    "Photography", "Video Editing", "3D Modeling", 
+    "Photography", "Video Editing", "3D Modeling",
     "Motion Graphics", "Davinci Resolve", "Digital Art",
     "Adobe Creative Suite", "Blender", "3D Animating",
   ];
@@ -62,7 +76,7 @@ const Portfolio = () => {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <img className="logo" src={logo} alt="Daniel Totti" />
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-4">
               <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
@@ -71,7 +85,7 @@ const Portfolio = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="md:hidden p-2 text-gray-600 hover:text-gray-900"
               onClick={toggleMenu}
               aria-label="Toggle Menu"
@@ -84,22 +98,22 @@ const Portfolio = () => {
           {isMenuOpen && (
             <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
               <div className="flex flex-col py-4">
-                <a 
-                  href="#projects" 
+                <a
+                  href="#projects"
                   className="px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   onClick={toggleMenu}
                 >
                   Projects
                 </a>
-                <a 
-                  href="#about" 
+                <a
+                  href="#about"
                   className="px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   onClick={toggleMenu}
                 >
                   About
                 </a>
-                <a 
-                  href="#contact" 
+                <a
+                  href="#contact"
                   className="px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   onClick={toggleMenu}
                 >
@@ -109,28 +123,28 @@ const Portfolio = () => {
             </div>
           )}
         </nav>
-        </header>
-        <div className="container mx-auto px-6 py-24">
-          <div className="text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">
-              Hi, I'm Daniel Francesco Totti
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Motion Grapher | 3D Artist | Visual Storyteller
-            </p>
-            <div className="flex justify-center space-x-4">
-              <a href="https://github.com/mancungart" className="p-2 text-gray-600 hover:text-gray-900">
-                <Github size={24} />
-              </a>
-              <a href="https://www.linkedin.com/in/danielfrancescototti/" className="p-2 text-gray-600 hover:text-gray-900">
-                <Linkedin size={24} />
-              </a>
-              <a href="mailto:danitottinainggolan@gmail.com" className="p-2 text-gray-600 hover:text-gray-900">
-                <Mail size={24} />
-              </a>
-            </div>
+      </header>
+      <div className="container mx-auto px-6 py-24">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            Hi, I'm Daniel Francesco Totti
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Motion Grapher | 3D Artist | Visual Storyteller
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a href="https://github.com/mancungart" className="p-2 text-gray-600 hover:text-gray-900">
+              <Github size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/danielfrancescototti/" className="p-2 text-gray-600 hover:text-gray-900">
+              <Linkedin size={24} />
+            </a>
+            <a href="mailto:danitottinainggolan@gmail.com" className="p-2 text-gray-600 hover:text-gray-900">
+              <Mail size={24} />
+            </a>
           </div>
         </div>
+      </div>
 
 
       {/* Rest of the components remain the same */}
@@ -141,9 +155,12 @@ const Portfolio = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
+                <div
+                  className="relative overflow-hidden cursor-pointer"
+                  onClick={() => openModal(project.image)}
+                >
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-110"
                   />
@@ -167,7 +184,12 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
-
+      {/* Modal */}
+      <ImageModal
+        image={modalImage}
+        isOpen={modalImage !== null}
+        onClose={closeModal}
+      />
       {/* Skills Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
@@ -190,7 +212,7 @@ const Portfolio = () => {
             Looking for a multimedia professional for your next project?<br />
             I'd love to discuss how we can work together!
           </p>
-          <a 
+          <a
             href="mailto:danitottinainggolan@gmail.com"
             className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800"
           >
