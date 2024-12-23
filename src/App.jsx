@@ -5,6 +5,7 @@ import ImageModal from './ImageModal';
 import "./App.css"
 import threeDImage from './images/3D.png';
 import totebag from './images/totebag.png';
+import wolves from './images/Wolves.png';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,8 +28,8 @@ const Portfolio = () => {
   const projects = [
     {
       title: "Digital Photography",
-      description: "Landscape and portrait photography collection showcasing natural beauty",
-      image: "/api/placeholder/600/400",
+      description: "Squad Poster Squad Wolves",
+      image: wolves,
       tags: ["Photography", "Lightroom", "Composition"]
     },
     {
